@@ -4,7 +4,7 @@ type Article = {
   id: number;
   title: string;
   summary: string;
-  img_url:string;
+  image_url:string;
 };
 
 const PaginaArticoli: React.FC = () => {
@@ -29,7 +29,7 @@ const PaginaArticoli: React.FC = () => {
         <button onClick={() => setSelected(null)}>Indietro</button>
         <h2>{selected.title}</h2>
         <img
-                src={selected.img_url}
+                src={selected.image_url}
                 alt={selected.title}
                 style={{ width: "100%", maxWidth: 400, borderRadius: 8 }}
               />
