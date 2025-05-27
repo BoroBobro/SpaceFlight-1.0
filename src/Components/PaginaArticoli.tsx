@@ -28,8 +28,10 @@ const PaginaArticoli: React.FC = () => {
   if (selected) {
     return (
       <div>
-        <button onClick={() => setSelected(null)}>Indietro</button>
+     <button onClick={() => setSelected(null)}>Indietro</button>
+
         <h2>{selected.title}</h2>
+        
         <img
                 src={selected.image_url}
                 alt={selected.title}
@@ -51,7 +53,7 @@ const PaginaArticoli: React.FC = () => {
         {rows.map((row,idx)=>(
             <Row key={idx} className="mb-3">
                 {row.map((art)=>(
-                    <Col md={6} key={art.id}>
+                    <Col md={2} key={art.id}>
                         <ArticleCard article={art} onRead={handleClick} />
                     </Col>
                 ))}
