@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { Col, Container, Row } from "react-bootstrap";
+import ArticleCard from "./ArticoloT";
 
 type Article = {
   id: number;
   title: string;
   summary: string;
-  image_url:string;
+  image_url: string;
 };
 
 const PaginaArticoli: React.FC = () => {
@@ -38,23 +40,24 @@ const PaginaArticoli: React.FC = () => {
     );
   }
 
+  const rows: Article[][] = [];
+  for(let i = 0; i < articles.length; i += 2){
+    rows.push(articles.slice(i, i + 2));
+  }
+
   return (
-    <div>
-      <h1>Articoli SpaceFlight News</h1>
-      <ul>
-        {articles.map((art) => (
-          <li key={art.id}>
-            <h2><img
-                src={art.image_url}
-                alt={art.title}
-                style={{ width: "100%", maxWidth: 400, borderRadius: 8 }}
-              /></h2>
-             
-            <button onClick={() => handleClick(art.id)}>{art.title}</button>
-          </li>
+    <Container className="mt-4">
+        <h1>Articoli Spaziali</h1>
+        {rows.map((row,idx)=>(
+            <Row key={idx} className="mb-3">
+                {row.map((art)=>(
+                    <Col md={6} key={art.id}>
+                        <ArticleCard article={art} onRead={handleClick} />
+                    </Col>
+                ))}
+            </Row>
         ))}
-      </ul>
-    </div>
+    </Container>
   );
 };
 
