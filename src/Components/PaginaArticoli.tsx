@@ -28,6 +28,11 @@ const PaginaArticoli: React.FC = () => {
       <div>
         <button onClick={() => setSelected(null)}>Indietro</button>
         <h2>{selected.title}</h2>
+        <img
+                src={selected.img_url}
+                alt={selected.title}
+                style={{ width: "100%", maxWidth: 400, borderRadius: 8 }}
+              />
         <p>{selected.summary}</p>
       </div>
     );
