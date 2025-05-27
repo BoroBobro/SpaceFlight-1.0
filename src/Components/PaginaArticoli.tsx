@@ -4,12 +4,13 @@ type Article = {
   id: number;
   title: string;
   summary: string;
+  img_url:string;
 };
 
 const PaginaArticoli: React.FC = () => {
   const [articles, setArticles] = useState<Article[]>([]);
   const [selected, setSelected] = useState<Article | null>(null);
-
+ 
   useEffect(() => {
     fetch("https://api.spaceflightnewsapi.net/v4/articles")
       .then((res) => res.json())
@@ -38,6 +39,12 @@ const PaginaArticoli: React.FC = () => {
       <ul>
         {articles.map((art) => (
           <li key={art.id}>
+            <h2><img
+                src={art.image_url}
+                alt={art.title}
+                style={{ width: "100%", maxWidth: 400, borderRadius: 8 }}
+              /></h2>
+             
             <button onClick={() => handleClick(art.id)}>{art.title}</button>
           </li>
         ))}
